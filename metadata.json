@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Breezy Car Wash",
+  "description": "Luxury car detailing and wash with online booking, interactive custom pricing estimator, and appointment tracking.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
