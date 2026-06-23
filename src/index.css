@@ -1,12 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600;700&family=Anton&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,900&family=Space+Grotesk:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/Nexa-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/fonts/Nexa-Heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
 @theme {
-  --font-heading: "Instrument Serif", serif;
-  --font-body: "Barlow", sans-serif;
-  --font-hero: "Anton", sans-serif;
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-heading: "Nexa", sans-serif;
+  --font-body: "Nexa", sans-serif;
+  --font-hero: "Nexa", sans-serif;
+  --font-sans: "Nexa", sans-serif;
+  --font-display: "Nexa", sans-serif;
+  --font-mono: "Nexa", sans-serif;
 
   --color-brand-bg: #F5E6D0;
   --color-brand-accent: #CD1C24;

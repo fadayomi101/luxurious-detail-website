@@ -6,7 +6,8 @@
 export interface Package {
   id: string;
   name: string;
-  price: number;
+  basePrice: number;
+  prices: Record<string, number>;
   description: string;
   features: string[];
 }
@@ -21,7 +22,6 @@ export interface AddOn {
 export interface VehicleSize {
   id: string;
   name: string;
-  multiplier: number;
   description: string;
 }
 

@@ -37,7 +37,7 @@ export default function BeforeAfterGallery() {
   };
 
   return (
-    <section id="before-after" className="py-24 bg-brand-bg text-brand-text-dark px-6 md:px-12 lg:px-24">
+    <section id="before-after" className="py-24 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         
         {/* SECTION HEADER */}
@@ -45,11 +45,11 @@ export default function BeforeAfterGallery() {
           <span className="text-brand-accent tracking-[0.2em] font-bold text-xs uppercase block mb-3">
             Proof of Craft
           </span>
-          <h2 className="font-hero text-4xl md:text-5xl uppercase italic tracking-tight text-brand-dark">
+          <h2 className="font-hero text-4xl md:text-5xl uppercase italic tracking-tight text-gray-900">
             Paint Rejuvenation Showcase
           </h2>
           <div className="w-[48px] h-[3px] bg-brand-accent mx-auto mt-4 mb-4" />
-          <p className="text-brand-text-dark/60 font-sans text-sm font-light">
+          <p className="text-gray-500 font-sans text-sm font-light">
             Slide the divider handle left and right on the work below to observe our high-precision optical multi-stage correction capability.
           </p>
         </div>
@@ -63,12 +63,11 @@ export default function BeforeAfterGallery() {
                 setActiveItemIndex(index);
                 setSliderPosition(50);
               }}
-              className={`px-5 py-2.5 font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer ${
+              className={`px-5 py-2.5 font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer rounded-full shadow-sm ${
                 activeItemIndex === index
-                  ? 'bg-brand-accent text-white'
-                  : 'bg-brand-dark/5 text-brand-dark/85 hover:bg-brand-dark/10'
+                  ? 'bg-black text-white'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
               }`}
-              style={{ borderRadius: '0px' }}
             >
               {item.title}
             </button>
@@ -88,14 +87,25 @@ export default function BeforeAfterGallery() {
               className="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden select-none cursor-ew-resize bg-brand-dark border-4 border-brand-dark shadow-2xl"
             >
               {/* After State (underneath, full width) */}
-              <img
-                src={activeItem.afterImg}
-                alt="After immaculate detailing restoration"
-                className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-                referrerPolicy="no-referrer"
-              />
+              {activeItem.afterImg.endsWith('.mp4') ? (
+                <video
+                  src={activeItem.afterImg}
+                  className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={activeItem.afterImg}
+                  alt="After immaculate detailing restoration"
+                  className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+                  referrerPolicy="no-referrer"
+                />
+              )}
               <span className="absolute bottom-4 right-4 bg-lime-600/90 text-white font-mono text-[9px] uppercase tracking-widest px-3 py-1 font-bold z-10 select-none">
-                AFTER BREEZY RESTORATION
+                AFTER LUXURIÖS RESTORATION
               </span>
 
               {/* Before State (overlay with variable clipped width) */}
@@ -103,17 +113,31 @@ export default function BeforeAfterGallery() {
                 className="absolute inset-y-0 left-0 overflow-hidden pointer-events-none transition-all duration-75"
                 style={{ width: `${sliderPosition}%` }}
               >
-                <img
-                  src={activeItem.beforeImg}
-                  alt="Before detailing restoration"
-                  className="absolute inset-0 h-full w-full object-cover max-w-none"
-                  // Ensure scale matches active image container
-                  style={{
-                    width: containerRef.current ? containerRef.current.offsetWidth : '100vw',
-                    height: containerRef.current ? containerRef.current.offsetHeight : '100%'
-                  }}
-                  referrerPolicy="no-referrer"
-                />
+                {activeItem.beforeImg.endsWith('.mp4') ? (
+                  <video
+                    src={activeItem.beforeImg}
+                    className="absolute inset-0 h-full w-full object-cover max-w-none"
+                    style={{
+                      width: containerRef.current ? containerRef.current.offsetWidth : '100vw',
+                      height: containerRef.current ? containerRef.current.offsetHeight : '100%'
+                    }}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={activeItem.beforeImg}
+                    alt="Before detailing restoration"
+                    className="absolute inset-0 h-full w-full object-cover max-w-none"
+                    style={{
+                      width: containerRef.current ? containerRef.current.offsetWidth : '100vw',
+                      height: containerRef.current ? containerRef.current.offsetHeight : '100%'
+                    }}
+                    referrerPolicy="no-referrer"
+                  />
+                )}
               </div>
               <span className="absolute bottom-4 left-4 bg-brand-accent/90 text-white font-mono text-[9px] uppercase tracking-widest px-3 py-1 font-bold z-10 select-none">
                 BEFORE WORKSTAGE
@@ -125,7 +149,7 @@ export default function BeforeAfterGallery() {
                 style={{ left: `${sliderPosition}%` }}
               >
                 {/* Physical Slider Handle Grip */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 bg-brand-accent text-white flex items-center justify-center shadow-lg border border-white/20 select-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white text-black flex items-center justify-center shadow-lg rounded-full select-none hover:scale-105 transition-transform">
                   <Columns className="h-4 w-4 rotate-90" />
                 </div>
               </div>
@@ -148,19 +172,19 @@ export default function BeforeAfterGallery() {
 
           {/* Description commentary Column (4 columns) */}
           <div className="lg:col-span-4 text-left">
-            <span className="p-1 px-2 text-[9px] uppercase font-mono font-bold bg-brand-dark/10 text-brand-dark tracking-wider rounded-sm">
+            <span className="p-1.5 px-3 text-[10px] uppercase font-mono font-bold bg-white border border-gray-200 text-gray-500 tracking-wider rounded-full shadow-sm">
               Workstage Case #{activeItemIndex + 1}
             </span>
-            <h4 className="font-hero text-2xl uppercase italic text-brand-dark tracking-wide mt-3 mb-4">
+            <h4 className="font-hero text-2xl uppercase italic text-gray-900 tracking-wide mt-4 mb-4">
               {activeItem.title}
             </h4>
             <div className="w-[30px] h-[2px] bg-brand-accent mb-4" />
-            <p className="font-sans text-sm text-brand-text-dark/80 leading-relaxed mb-6 font-light">
+            <p className="font-sans text-sm text-gray-600 leading-relaxed mb-6 font-light">
               {activeItem.description}
             </p>
 
-            <div className="bg-brand-dark/5 border-l-2 border-brand-accent p-4.5 font-mono text-xs text-brand-text-dark/75 space-y-2">
-              <p className="font-bold text-[10px] text-brand-dark uppercase tracking-widest flex items-center gap-1.5 mb-1">
+            <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 font-mono text-xs text-gray-600 space-y-2">
+              <p className="font-bold text-[10px] text-gray-400 uppercase tracking-widest flex items-center gap-1.5 mb-2">
                 <AlertCircle className="h-3.5 w-3.5 text-brand-accent" />
                 Performance Log
               </p>

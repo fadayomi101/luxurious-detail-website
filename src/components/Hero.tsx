@@ -26,10 +26,13 @@ export default function Hero({ onOpenBooking }: HeroProps) {
       />
 
       <div className="absolute inset-0 z-10 w-full h-full max-w-[1600px] mx-auto flex flex-col justify-between items-center px-4 pb-[5vh] md:pb-[8vh]">
+        <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
+        </div>
+
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+           transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
            className="flex gap-4 justify-center items-center mt-auto mb-[5vh] pointer-events-auto"
         >
           <button className="px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium hover:bg-white/20 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.2)] hover:scale-105">
@@ -42,6 +45,11 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             Book Now
           </button>
         </motion.div>
+      </div>
+
+      {/* Covering the Watermark Star */}
+      <div className="absolute bottom-4 right-6 md:bottom-8 md:right-12 z-20 opacity-80 mix-blend-overlay">
+        <Droplets className="w-8 h-8 md:w-12 md:h-12 text-white/50" />
       </div>
     </section>
   );
