@@ -5,10 +5,10 @@
 
 import { useState } from 'react';
 import { FAQS } from '../data';
-import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { Plus, X, ArrowRight } from 'lucide-react';
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(1); // 1 to have the second one open like the image
 
   const toggleIndex = (index: number) => {
     if (openIndex === index) {
@@ -19,60 +19,73 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faqs" className="py-24 bg-white text-gray-900 px-6 md:px-12 lg:px-24">
-      <div className="max-w-4xl mx-auto">
+    <section id="faqs" className="py-24 bg-gradient-to-br from-red-50 via-white to-[#F5E6D0]/60 px-4 md:px-12 lg:px-24">
+      <div className="max-w-[900px] mx-auto bg-[#F2F2F4] rounded-[3rem] px-6 py-16 md:px-16 md:py-20 shadow-[0_0_80px_rgba(0,0,0,0.15)] border border-white">
         
         {/* SECTION HEADER */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-brand-accent tracking-[0.2em] font-bold text-xs uppercase block mb-3">
-            TECHNICAL SUPPORT
-          </span>
-          <h2 className="font-hero text-4xl md:text-5xl uppercase italic tracking-tight text-gray-900">
-            Detailing FAQ
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center space-x-2 text-[10px] uppercase tracking-widest text-gray-500 mb-6 bg-white border border-gray-200 rounded-full px-3 py-1 shadow-sm">
+            <span className="text-gray-400">010</span>
+            <span>•</span>
+            <span className="font-bold text-gray-900">FAQS</span>
+          </div>
+          <h2 className="font-sans text-4xl md:text-5xl font-medium tracking-tight text-gray-900">
+            Common Questions
           </h2>
-          <div className="w-[48px] h-[3px] bg-brand-accent mx-auto mt-4 mb-4" />
-          <p className="text-gray-500 font-sans text-sm font-light">
-            Answers to our most popular questions regarding chemical safety coatings and timespans.
-          </p>
         </div>
 
         {/* ACCORDION CONTAINER */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="border border-gray-200 bg-white shadow-sm overflow-hidden transition-all duration-300 rounded-2xl"
+                className={`transition-all duration-500 overflow-hidden ${
+                  isOpen 
+                    ? 'bg-white border border-[#C7D2FE] rounded-[2rem] shadow-sm' 
+                    : 'bg-[#E4E4E5] border border-transparent rounded-full hover:bg-[#DCDCDC]'
+                }`}
               >
                 <button
                   onClick={() => toggleIndex(index)}
-                  className="w-full flex items-center justify-between p-6 text-left cursor-pointer transition-colors hover:bg-gray-50"
+                  className="w-full flex items-center justify-between p-2 text-left cursor-pointer"
                 >
-                  <div className="flex items-start space-x-4">
-                    <HelpCircle className="h-5 w-5 text-brand-accent shrink-0 mt-0.5" />
-                    <span className="font-sans font-bold text-sm md:text-base text-gray-900 leading-snug">
+                  <div className="flex items-center space-x-4 pl-2">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-mono shrink-0 transition-colors ${isOpen ? 'bg-gray-50 text-gray-600' : 'bg-white text-gray-600'}`}>
+                      {index + 1}
+                    </div>
+                    <span className="font-sans font-medium text-[15px] md:text-base text-gray-900">
                       {faq.question}
                     </span>
                   </div>
-                  <div className="p-1.5 bg-gray-100 hover:bg-gray-200 rounded-full shrink-0 ml-4 transition-colors">
-                    {isOpen ? <Minus className="h-4 w-4 text-brand-accent" /> : <Plus className="h-4 w-4 text-gray-500" />}
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'bg-white border border-gray-200 text-gray-900' : 'bg-[#111118] text-white'}`}>
+                    {isOpen ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                   </div>
                 </button>
-
-                {/* Content body with responsive height animation */}
+                
                 <div
-                  className={`transition-all duration-300 ease-in-out ${
-                    isOpen ? 'max-h-96 opacity-100 border-t border-gray-100 p-6 bg-gray-50' : 'max-h-0 opacity-0 pointer-events-none'
-                  } overflow-hidden`}
+                  className={`transition-all duration-500 ease-in-out ${
+                    isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+                  }`}
                 >
-                  <p className="font-sans text-xs md:text-sm text-gray-600 leading-relaxed font-light">
-                    {faq.answer}
-                  </p>
+                  <div className="pb-8 pt-2 pl-[4.5rem] pr-6 md:pr-12">
+                    <p className="font-sans text-[14px] text-gray-500 leading-relaxed max-w-2xl">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        {/* BOTTOM CONTACT LINK */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-500 text-sm mb-2">Have any other questions?</p>
+          <a href="#contact" className="inline-flex items-center text-sm font-medium text-gray-900 hover:text-black transition-colors underline decoration-gray-400 underline-offset-4 hover:decoration-black">
+            Contact Us <ArrowRight className="w-4 h-4 ml-1.5 bg-gray-200 rounded-full p-0.5 text-gray-600" />
+          </a>
         </div>
 
       </div>

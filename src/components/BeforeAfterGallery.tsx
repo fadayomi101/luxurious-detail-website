@@ -37,7 +37,7 @@ export default function BeforeAfterGallery() {
   };
 
   return (
-    <section id="before-after" className="py-24 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24">
+    <section id="before-after" className="py-16 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         
         {/* SECTION HEADER */}
@@ -45,7 +45,7 @@ export default function BeforeAfterGallery() {
           <span className="text-brand-accent tracking-[0.2em] font-bold text-xs uppercase block mb-3">
             Proof of Craft
           </span>
-          <h2 className="font-hero text-4xl md:text-5xl uppercase italic tracking-tight text-gray-900">
+          <h2 className="font-hero text-4xl md:text-5xl leading-tight tracking-tight text-gray-900">
             Paint Rejuvenation Showcase
           </h2>
           <div className="w-[48px] h-[3px] bg-brand-accent mx-auto mt-4 mb-4" />
@@ -84,7 +84,7 @@ export default function BeforeAfterGallery() {
               onMouseMove={handleMouseMove}
               onTouchMove={handleTouchMove}
               onMouseDown={(e) => handleMove(e.clientX)}
-              className="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden select-none cursor-ew-resize bg-brand-dark border-4 border-brand-dark shadow-2xl"
+              className="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden select-none cursor-ew-resize bg-brand-dark border-4 border-brand-dark shadow-2xl rounded-3xl"
             >
               {/* After State (underneath, full width) */}
               {activeItem.afterImg.endsWith('.mp4') ? (
@@ -175,7 +175,7 @@ export default function BeforeAfterGallery() {
             <span className="p-1.5 px-3 text-[10px] uppercase font-mono font-bold bg-white border border-gray-200 text-gray-500 tracking-wider rounded-full shadow-sm">
               Workstage Case #{activeItemIndex + 1}
             </span>
-            <h4 className="font-hero text-2xl uppercase italic text-gray-900 tracking-wide mt-4 mb-4">
+            <h4 className="font-hero text-2xl text-gray-900 tracking-wide mt-4 mb-4">
               {activeItem.title}
             </h4>
             <div className="w-[30px] h-[2px] bg-brand-accent mb-4" />

@@ -170,7 +170,7 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
   ];
 
   return (
-    <section id="booking-section" className="scroll-mt-24 py-24 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24">
+    <section id="booking-section" className="scroll-mt-24 py-16 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         
         {/* SECTION HEADER */}
@@ -178,7 +178,7 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
           <span className="text-brand-accent tracking-[0.2em] font-bold text-xs uppercase block mb-3">
             RESERVATION SYSTEM
           </span>
-          <h2 className="font-hero text-4xl md:text-5xl uppercase italic tracking-tight text-gray-900">
+          <h2 className="font-hero text-4xl md:text-5xl leading-tight tracking-tight text-gray-900">
             Lock In Your Detail
           </h2>
           <div className="w-[48px] h-[3px] bg-brand-accent mx-auto mt-4 mb-4" />
@@ -543,7 +543,7 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
                 </div>
                 <div>
                   <span className="text-green-600 text-[10px] font-bold font-mono tracking-widest uppercase">CONCOURSE CONFIRMED</span>
-                  <h3 className="font-hero text-2xl uppercase italic text-gray-900 tracking-wide">RECEIPT SECURED</h3>
+                  <h3 className="font-hero text-2xl text-gray-900 tracking-wide">RECEIPT SECURED</h3>
                 </div>
               </div>
             </div>

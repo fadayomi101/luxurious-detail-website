@@ -28,7 +28,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className={`fixed left-0 w-full px-4 sm:px-8 lg:px-16 z-50 transition-all duration-300 ${isScrolled || location.pathname !== '/' ? 'top-2 bg-white/90 backdrop-blur-md shadow-sm py-2' : 'top-4'}`}>
+    <header className={`fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-16 z-50 transition-all duration-300 ${isScrolled || location.pathname !== '/' ? 'bg-white/70 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="mx-auto flex items-center justify-between transition-all duration-300 max-w-[1400px]">
         {/* LEFT: Brand logo with luxury vector emblem & typography */}
         <Link 
@@ -38,7 +38,7 @@ export default function Navbar() {
         >
           {/* Symmetrical Luxury Detail Emblem */}
           <svg 
-            className={`h-8 w-auto transition-transform duration-500 group-hover:scale-105 ${isScrolled ? 'text-gray-900 group-hover:text-brand-accent' : 'text-brand-accent'}`}
+            className={`h-8 w-auto transition-transform duration-500 group-hover:scale-105 ${isScrolled ? 'text-gray-900 group-hover:text-[#CD1C24]' : 'text-white group-hover:text-[#F5E6D0]'}`}
             viewBox="0 0 100 70" 
             fill="currentColor"
           >
@@ -62,14 +62,14 @@ export default function Navbar() {
           </svg>
         </Link>
 
-        {/* CENTER (Desktop): liquid-glass pill with Links + Claim active button */}
-        <div className={`hidden md:flex rounded-full px-1.5 py-1.5 items-center gap-2 shadow-xl ${isScrolled || location.pathname !== '/' ? 'bg-gray-100' : 'liquid-glass'}`}>
-          <nav className="flex items-center">
+        {/* CENTER (Desktop): Links + Claim active button */}
+        <div className="hidden md:flex items-center gap-8">
+          <nav className="flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className={`px-4 py-2 text-sm font-bold transition-colors font-body tracking-wide relative after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[1px] after:bg-brand-accent after:transform after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 ${isScrolled || location.pathname !== '/' ? 'text-gray-600 hover:text-gray-900' : 'text-white/90 hover:text-white'}`}
+                className={`text-sm font-medium transition-colors font-body tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-[1px] after:bg-current after:transform after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 ${isScrolled || location.pathname !== '/' ? 'text-gray-600 hover:text-gray-900' : 'text-white/80 hover:text-white'}`}
               >
                 {link.name}
               </Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
           
           <Link
             to="/contact"
-            className={`group px-5 py-2.5 text-sm font-bold rounded-full whitespace-nowrap flex items-center gap-1.5 transition-all duration-200 active:scale-95 shadow-md font-body cursor-pointer ${isScrolled || location.pathname !== '/' ? 'bg-black text-white hover:bg-gray-800' : 'bg-white text-black hover:bg-brand-bg hover:text-brand-text-dark'}`}
+            className={`group px-6 py-2.5 text-sm font-bold rounded-full whitespace-nowrap flex items-center gap-1.5 transition-all duration-200 active:scale-95 shadow-md font-body cursor-pointer ${isScrolled || location.pathname !== '/' ? 'bg-black text-white hover:bg-gray-800' : 'bg-white text-black hover:bg-gray-100'}`}
           >
             <span>Contact Us</span>
             <svg 

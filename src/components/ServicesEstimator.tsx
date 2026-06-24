@@ -68,7 +68,7 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
   const displayedPackages = isHome ? PACKAGES.slice(0, 3) : PACKAGES;
 
   return (
-    <section id="services" className={`relative py-24 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24 overflow-hidden ${isHome ? '' : 'pt-0'}`}>
+    <section id="services" className={`relative py-16 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24 overflow-hidden ${isHome ? '' : 'pt-0'}`}>
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
@@ -87,7 +87,7 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
             <span className="text-brand-accent tracking-[0.2em] font-bold text-xs uppercase block mb-3">
               Service Packages
             </span>
-            <h2 className="font-hero text-4xl md:text-5xl uppercase italic tracking-tight text-gray-900">
+            <h2 className="font-hero text-4xl md:text-5xl leading-tight tracking-tight text-gray-900">
               Detailing Menu
             </h2>
             <div className="w-[48px] h-[3px] bg-brand-accent mx-auto mt-4 mb-4" />
@@ -199,7 +199,7 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
               <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mb-10 pb-8 border-b border-gray-100">
                 <div className="text-left w-full lg:w-auto">
                 <span className="text-brand-accent text-xs uppercase font-mono tracking-widest block mb-1">Tactile Console</span>
-                <h3 className="font-hero text-3xl md:text-4xl text-gray-900 uppercase italic tracking-wide">
+                <h3 className="font-hero text-3xl md:text-4xl text-gray-900 tracking-wide">
                   Detailing Price Estimator
                 </h3>
               </div>
@@ -334,7 +334,7 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
                 <div className="bg-gray-50 border border-gray-200 rounded-3xl p-6 md:p-8 h-full flex flex-col justify-between" style={{ minHeight: '360px' }}>
                   
                   <div>
-                    <h4 className="font-hero text-xl uppercase italic text-gray-900 tracking-wider mb-5 pb-3 border-b border-gray-200">
+                    <h4 className="font-hero text-xl text-gray-900 tracking-wider mb-5 pb-3 border-b border-gray-200">
                       Pricing Summary
                     </h4>
 

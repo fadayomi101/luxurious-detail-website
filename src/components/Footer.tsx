@@ -3,115 +3,136 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Sparkles, MapPin, Clock, Phone, Mail, Instagram, Facebook, ArrowUp } from 'lucide-react';
-
+import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
-  const scrollUp = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="bg-white text-gray-900 pt-20 pb-10 px-6 md:px-12 lg:px-24 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 text-left pb-16 border-b border-gray-200">
+    <footer className="bg-[#F5E6D0] p-4 sm:p-8 md:p-12">
+      <div className="max-w-[1400px] mx-auto bg-white rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-lg">
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-gray-100">
           
-          {/* Column 1: Brand & Bio (5 cells wide) */}
-          <div className="md:col-span-5 space-y-6">
-            <Link to="/" className="flex items-center space-x-2">
-              <span className="p-1 bg-brand-accent rounded-sm">
-                <Sparkles className="h-5 w-5 text-white" />
-              </span>
-              <span className="font-hero text-2xl tracking-tight text-gray-900 uppercase italic">
-                Luxuriös<span className="text-brand-accent"> Detail</span>
-              </span>
+          {/* Column 1: Brand & Info */}
+          <div className="md:col-span-1 lg:col-span-6 space-y-6 lg:pr-8">
+            <Link to="/" className="inline-block">
+              <img 
+                src="/Gemini_Generated_Image_2e4n2o2e4n2o2e4n.png" 
+                alt="Luxuriös Detail Logo" 
+                className="w-56 h-auto object-contain object-left"
+              />
             </Link>
             
-            <p className="text-gray-500 font-sans text-xs md:text-sm leading-relaxed font-light">
-              We provide world-grade, master-level detailing directly to our private clientele. Our operations bypass high-production tunnel tunnels in favor of bespoke paint conservation, luxury hand care, and advanced chemical defense coatings.
+            <p className="text-gray-500 text-sm leading-relaxed">
+              World-class automotive detailing, specializing in bespoke paint conservation, luxury hand care, and advanced chemical defense coatings.
             </p>
 
-            <div className="flex items-center space-x-4">
-              <a
-                href="#"
-                className="p-2.5 bg-gray-100 hover:bg-brand-accent hover:text-white transition-all text-gray-600 rounded-full"
-                aria-label="Instagram link"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="p-2.5 bg-gray-100 hover:bg-brand-accent hover:text-white transition-all text-gray-600 rounded-full"
-                aria-label="Facebook link"
-              >
-                <Facebook className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Column 2: Hours & Location (4 cells wide) */}
-          <div className="md:col-span-4 space-y-5 font-sans font-light text-xs md:text-sm text-gray-600">
-            <h4 className="font-hero text-lg uppercase italic text-gray-900 tracking-wider pb-1 border-b border-gray-200">
-              Operations Center
-            </h4>
-
-            <div className="flex items-start space-x-3.5">
-              <MapPin className="h-4 w-4 text-brand-accent shrink-0 mt-0.5" />
-              <div>
-                <p className="font-bold text-gray-900 text-xs uppercase tracking-wider">Detallist Workshop HQ</p>
-                <p className="text-gray-500 mt-0.5">840 Detailing Dr, Suite 100, West Los Angeles, CA 90025</p>
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start space-x-3 text-sm text-gray-600">
+                <MapPin className="h-5 w-5 text-[#51be9b] shrink-0 mt-0.5" />
+                <span>
+                  Sigma Estate, I.T Igbani Street Off Obafemi Awolowo Way Jabi,<br />
+                  Abuja., Abuja, Nigeria 900108
+                </span>
+              </div>
+              <div className="flex items-center space-x-3 text-sm text-gray-600">
+                <Phone className="h-5 w-5 text-[#51be9b] shrink-0" />
+                <span>08133335515</span>
+              </div>
+              <div className="flex items-center space-x-3 text-sm text-gray-600">
+                <Mail className="h-5 w-5 text-[#51be9b] shrink-0" />
+                <span>info@luxuriosdetail.com</span>
               </div>
             </div>
 
-            <div className="flex items-start space-x-3.5">
-              <Clock className="h-4 w-4 text-brand-accent shrink-0 mt-0.5" />
-              <div>
-                <p className="font-bold text-gray-900 text-xs uppercase tracking-wider">Active Calibrated Hours</p>
-                <p className="text-gray-500 mt-0.5">Monday - Saturday: 8:00 AM - 6:00 PM</p>
-                <p className="text-gray-400 text-[10px] uppercase font-mono mt-0.5">Sunday: Private Reserve Appointments only</p>
+          </div>
+
+          {/* Column 2: Our Services */}
+          <div className="md:col-span-1 lg:col-span-3 pt-2 lg:pt-4 lg:pl-8">
+            <h4 className="font-bold text-gray-900 mb-6 text-sm">Our Services</h4>
+            <ul className="space-y-4 text-sm text-gray-500">
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Paint Correction</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Ceramic Coating</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Interior Detailing</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Engine Bay Care</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Wheel Coatings</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Maintenance Wash</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Protective Films</Link></li>
+            </ul>
+
+            <div className="pt-8">
+              <h4 className="font-bold text-gray-900 mb-4 text-sm">Follow Our Journey</h4>
+              <div className="flex items-center space-x-3">
+                <a href="https://www.instagram.com/luxurios_detail?utm_source=qr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-50 text-gray-600 hover:bg-[#51be9b] hover:text-white transition-colors">
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a href="#" className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-50 text-gray-600 hover:bg-[#51be9b] hover:text-white transition-colors">
+                  <Facebook className="w-4 h-4" />
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Column 3: Contact Channels (3 cells wide) */}
-          <div className="md:col-span-3 space-y-5 font-sans font-light text-xs md:text-sm text-gray-600">
-            <h4 className="font-hero text-lg uppercase italic text-gray-900 tracking-wider pb-1 border-b border-gray-200">
-              Communication Care
-            </h4>
-
-            <div className="flex items-center space-x-3">
-              <Phone className="h-4 w-4 text-brand-accent shrink-0" />
-              <a href="tel:+1555273399" className="hover:text-brand-accent transition-colors font-mono font-bold text-xs">
-                (555) LUXURIOS
-              </a>
+          {/* Column 3: Support */}
+          <div className="md:col-span-1 lg:col-span-3 pt-2 lg:pt-4">
+            <h4 className="font-bold text-gray-900 mb-6 text-sm">Support</h4>
+            <ul className="space-y-4 text-sm text-gray-500 mb-8">
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Help Center</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Insurance Claims</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Booking Support</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">Emergency Contact</Link></li>
+              <li><Link to="#" className="hover:text-[#51be9b] transition-colors">COVID-19 Info</Link></li>
+            </ul>
+            
+            {/* Badges */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 p-3 bg-gray-50 border border-gray-100 rounded-xl">
+                <div className="w-8 h-8 rounded-full bg-[#1b9a78] flex items-center justify-center text-white shrink-0">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <div>
+                  <p className="font-bold text-xs text-gray-900">IDA Certified</p>
+                  <p className="text-[10px] text-gray-500">Verified Detailer</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3 p-3 bg-gray-50 border border-gray-100 rounded-xl">
+                <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white shrink-0">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <p className="font-bold text-xs text-gray-900">SSL Secured</p>
+                  <p className="text-[10px] text-gray-500">Safe & Secure</p>
+                </div>
+              </div>
             </div>
-
-            <div className="flex items-center space-x-3">
-              <Mail className="h-4 w-4 text-brand-accent shrink-0" />
-              <a href="mailto:concierge@luxuriosdetail.com" className="hover:text-brand-accent transition-colors">
-                concierge@luxuriosdetail.com
-              </a>
-            </div>
-
-            <button
-              onClick={scrollUp}
-              className="mt-4 flex items-center space-x-2 bg-gray-100 hover:bg-black hover:text-white transition-all text-gray-900 text-xs font-bold uppercase tracking-widest px-4 py-2.5 cursor-pointer rounded-full"
-            >
-              <span>Scroll to Top</span>
-              <ArrowUp className="h-3.5 w-3.5" />
-            </button>
           </div>
-
         </div>
 
-        {/* Legal Row */}
-        <div className="pt-10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] text-gray-400">
-          <p>© 2026 LUXURIÖS DETAIL CORP. ALL CONCOURSE RESTORATION RIGHTS RESERVED.</p>
-          <div className="space-x-4">
-            <a href="#" className="hover:text-brand-accent transition-colors">PRIVACY CODE</a>
-            <span>•</span>
-            <a href="#" className="hover:text-brand-accent transition-colors">TERMS OF CALIBRATION</a>
+        {/* Bottom Bar */}
+        <div className="pt-6 flex flex-col xl:flex-row items-center justify-between gap-6 text-xs text-gray-500">
+          <p>© 2026 Luxuriös Detail. All rights reserved. Made with <span className="text-red-500">❤️</span> for car lovers worldwide.</p>
+          
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 font-medium">
+            <Link to="#" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
+            <Link to="#" className="hover:text-gray-900 transition-colors">Terms of Service</Link>
+            <Link to="#" className="hover:text-gray-900 transition-colors">Cookie Policy</Link>
+            <Link to="#" className="hover:text-gray-900 transition-colors">Refund Policy</Link>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <span className="text-gray-600 font-medium">We accept:</span>
+            {/* Payment Icons */}
+            <div className="flex items-center space-x-2">
+              <div className="bg-blue-600 text-white font-bold text-[8px] italic px-2 py-1 rounded">VISA</div>
+              <div className="flex space-x-0 bg-gray-100 p-1 rounded items-center">
+                <div className="w-3 h-3 rounded-full bg-red-500 mix-blend-multiply opacity-80"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400 mix-blend-multiply opacity-80 -ml-1"></div>
+              </div>
+              <div className="bg-blue-600 text-white font-bold text-[8px] px-2 py-1 rounded tracking-tighter">PP</div>
+              <div className="bg-black text-white px-2 py-1 rounded flex items-center justify-center">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05 1.8-3.08 1.8-1.06 0-1.39-.67-3.14-.67-1.74 0-2.12.65-3.12.65-1.08 0-2.18-.89-3.21-1.92-2.18-2.14-3.87-6.07-3.87-8.99 0-3.66 2.01-5.61 4.38-5.61 1.05 0 2.05.47 2.89.89.79.39 1.48.74 2.12.74.61 0 1.34-.36 2.19-.78.93-.45 2.1-.96 3.32-.96 1.48 0 2.87.52 3.92 1.5-3.25 1.77-2.73 5.92.51 7.23-.74 1.94-1.87 4-2.91 5.12zM12.03 4.34c-.16-2.11 1.77-3.9 3.8-4.34.25 2.21-1.98 4.07-3.8 4.34z"/></svg>
+              </div>
+            </div>
           </div>
         </div>
 

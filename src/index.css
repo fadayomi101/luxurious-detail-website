@@ -27,6 +27,18 @@
   --color-brand-dark: #111118;
   --color-brand-text-dark: #1A1A1A;
   --color-brand-muted: #888888;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 40s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 1rem)); }
+  }
+
+  @keyframes marquee-reverse {
+    from { transform: translateX(calc(-50% - 1rem)); }
+    to { transform: translateX(0); }
+  }
 }
 
 @layer base {
