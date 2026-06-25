@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Droplets } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -13,40 +12,36 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenBooking }: HeroProps) {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
   return (
     <section
       id="hero"
-      className="relative w-full h-[90dvh] /* mobile only */ md:h-[100dvh] overflow-hidden flex items-center justify-center bg-transparent"
+      className="relative w-full h-[90dvh] /* mobile only */ md:h-[100dvh] overflow-hidden flex items-center justify-center bg-black"
     >
       {/* Mobile background to fill the screen */}
       <motion.video
-        src="/final_hero_section.mp4"
+        src="/confirmed-hero-vid.mp4"
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
-        onCanPlay={() => setIsVideoLoaded(true)}
-        className={`absolute inset-0 w-full h-full object-cover scale-[1.1] md:hidden z-0 pointer-events-none transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'} /* mobile only */`}
+        className="absolute inset-0 w-full h-full object-cover scale-[1.1] md:hidden z-0 pointer-events-none /* mobile only */"
       />
       {/* Glass overlay for mobile background */}
-      <div className={`absolute inset-0 bg-white/5 backdrop-blur-md md:hidden z-0 pointer-events-none transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'} /* mobile only */`}></div>
+      <div className="absolute inset-0 bg-white/5 backdrop-blur-md md:hidden z-0 pointer-events-none /* mobile only */"></div>
 
       {/* Main video */}
       <motion.video
         initial={{ scale: 1.05 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: [0.21, 0.47, 0.32, 0.98] }}
-        src="/final_hero_section.mp4"
+        src="/confirmed-hero-vid.mp4"
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
-        onCanPlay={() => setIsVideoLoaded(true)}
-        className={`absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] aspect-video rounded-[2rem] object-contain shadow-2xl /* mobile only */ md:top-0 md:left-0 md:translate-x-0 md:translate-y-0 md:w-full md:h-full md:aspect-auto md:rounded-none md:shadow-none md:object-cover z-0 pointer-events-none transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] aspect-video rounded-[2rem] object-contain shadow-2xl /* mobile only */ md:top-0 md:left-0 md:translate-x-0 md:translate-y-0 md:w-full md:h-full md:aspect-auto md:rounded-none md:shadow-none md:object-cover z-0 pointer-events-none"
       />
 
       <div className="absolute inset-0 z-10 w-full h-full max-w-[1600px] mx-auto flex flex-col justify-between items-center px-4 pb-[5vh] md:pb-[8vh]">
