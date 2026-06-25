@@ -46,7 +46,13 @@ export default function Navbar() {
         >
           {/* Symmetrical Luxury Detail Emblem */}
           <svg 
-            className={`h-8 w-auto transition-transform duration-500 group-hover:scale-105 ${isScrolled ? 'text-gray-900 group-hover:text-[#CD1C24]' : 'text-white group-hover:text-[#CD1C24]'}`}
+            className={`h-8 w-auto transition-transform duration-500 group-hover:scale-105 ${
+              location.pathname !== '/' 
+                ? 'text-[#CD1C24]' 
+                : isScrolled 
+                  ? 'text-gray-900 group-hover:text-[#CD1C24]' 
+                  : 'text-white group-hover:text-[#CD1C24]'
+            }`}
             viewBox="0 0 100 70" 
             fill="currentColor"
           >

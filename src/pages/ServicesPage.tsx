@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import ServicesEstimator from '../components/ServicesEstimator';
+import servicesBanner from '../assets/services-banner.jpeg';
 
 export default function ServicesPage() {
   const navigate = useNavigate();
@@ -11,10 +12,11 @@ export default function ServicesPage() {
   return (
     <div className="pt-20 lg:pt-24">
       {/* Banner Section */}
-      <div className="relative w-full h-[20vh] md:h-[25vh] min-h-[180px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[20vh] md:h-[25vh] min-h-[180px] flex items-center justify-center overflow-hidden bg-[#111]">
         <img 
-          src="/services-banner.jpeg" 
+          src={servicesBanner}
           alt="Our Services" 
+          loading="eager"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/60 z-10"></div>

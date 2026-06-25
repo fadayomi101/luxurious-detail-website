@@ -114,7 +114,7 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
 
     // Generate WhatsApp message
     const message = `New Lead Generated:\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nVehicle: ${vehicleMakeModel}\nSize: ${sizeName}\nService: ${packageNames}\nDate: ${date}\nTime: ${time}\nTotal Price: ₦${finalPrice.toLocaleString()}\nNotes: ${notes || 'None'}`;
-    const whatsappUrl = `https://wa.me/2348123456789?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/2348133335515?text=${encodeURIComponent(message)}`;
     
     // Open WhatsApp in a new tab
     window.open(whatsappUrl, '_blank');

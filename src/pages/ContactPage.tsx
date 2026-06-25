@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import BookingForm from '../components/BookingForm';
+import contactBanner from '../assets/contact-banner.png';
 
 export default function ContactPage() {
   const location = useLocation();
@@ -13,10 +14,11 @@ export default function ContactPage() {
   return (
     <div className="pt-20 lg:pt-24 min-h-screen">
       {/* Banner Section */}
-      <div className="relative w-full h-[15vh] md:h-[20vh] min-h-[140px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[15vh] md:h-[20vh] min-h-[140px] flex items-center justify-center overflow-hidden bg-[#111]">
         <img 
-          src="/contact-banner.png" 
+          src={contactBanner}
           alt="Contact Us" 
+          loading="eager"
           className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
         />
         <div className="absolute inset-0 bg-black/60 z-10"></div>
