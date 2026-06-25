@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import ServicesEstimator from '../components/ServicesEstimator';
-import servicesBanner from '../assets/services-banner-new.jpeg';
+import servicesBanner from '../assets/services-banner-latest.jpeg';
 
 export default function ServicesPage() {
   const navigate = useNavigate();

@@ -6,7 +6,7 @@ export default function AboutPage() {
     <div className="pt-20 lg:pt-24 min-h-screen">
       {/* Banner Section */}
       <div 
-        className="relative w-full h-[15vh] md:h-[20vh] min-h-[140px] flex items-center justify-center bg-[#111] bg-[center_60%] md:bg-[center_60%] bg-cover bg-no-repeat bg-fixed"
+        className="relative w-full h-[15vh] md:h-[20vh] min-h-[140px] flex items-center justify-center bg-[#111] bg-[center_38%] md:bg-[center_38%] bg-cover bg-no-repeat"
         style={{ backgroundImage: `url(${aboutBanner})` }}
       >
         <div className="absolute inset-0 bg-black/60 z-10"></div>

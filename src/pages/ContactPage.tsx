@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import BookingForm from '../components/BookingForm';
-import contactBanner from '../assets/contact-banner.png';
+import contactBanner from '../assets/contact-banner-new.png';
 
 export default function ContactPage() {
   const location = useLocation();
