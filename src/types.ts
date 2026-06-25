@@ -12,13 +12,6 @@ export interface Package {
   features: string[];
 }
 
-export interface AddOn {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-}
-
 export interface VehicleSize {
   id: string;
   name: string;
@@ -34,8 +27,6 @@ export interface Appointment {
   vehicleSize: string;
   packageId: string;
   packageName: string;
-  addOnIds: string[];
-  addOnNames: string[];
   date: string;
   time: string;
   notes?: string;

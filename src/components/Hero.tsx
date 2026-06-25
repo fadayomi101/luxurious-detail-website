@@ -5,6 +5,7 @@
 
 import { motion } from 'motion/react';
 import { Droplets } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -23,10 +24,11 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         loop
         muted
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover scale-[1.1] md:hidden z-0 pointer-events-none /* mobile only */"
       />
       {/* Glass overlay for mobile background */}
-      <div className="absolute inset-0 bg-white/5 backdrop-blur-lg md:hidden z-0 pointer-events-none /* mobile only */"></div>
+      <div className="absolute inset-0 bg-white/5 backdrop-blur-md md:hidden z-0 pointer-events-none /* mobile only */"></div>
 
       {/* Main video */}
       <motion.video
@@ -38,6 +40,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         loop
         muted
         playsInline
+        preload="auto"
         className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] aspect-video rounded-[2rem] object-contain shadow-2xl /* mobile only */ md:top-0 md:left-0 md:translate-x-0 md:translate-y-0 md:w-full md:h-full md:aspect-auto md:rounded-none md:shadow-none md:object-cover z-0 pointer-events-none"
       />
 
@@ -51,15 +54,15 @@ export default function Hero({ onOpenBooking }: HeroProps) {
            transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 justify-center items-center mt-auto mb-[5vh] pointer-events-auto"
         >
-          <button className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium hover:bg-white/20 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.2)] hover:scale-105">
+          <Link to="/services" className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium hover:bg-white/20 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.2)] hover:scale-105 text-center">
             Discover
-          </button>
-          <button 
-            onClick={onOpenBooking}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white font-medium hover:bg-black/60 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.4)] hover:scale-105"
+          </Link>
+          <Link 
+            to="/contact"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white font-medium hover:bg-black/60 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.4)] hover:scale-105 text-center"
           >
             Book Now
-          </button>
+          </Link>
         </motion.div>
       </div>
 

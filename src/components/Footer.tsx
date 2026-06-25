@@ -15,11 +15,11 @@ export default function Footer() {
           
           {/* Column 1: Brand & Info */}
           <div className="md:col-span-1 lg:col-span-6 space-y-6 lg:pr-8">
-            <Link to="/" className="inline-block">
+            <Link to="/" className="inline-block group">
               <img 
-                src="/Gemini_Generated_Image_2e4n2o2e4n2o2e4n.png" 
+                src="/logo.png" 
                 alt="Luxuriös Detail Logo" 
-                className="w-56 h-auto object-contain object-left"
+                className="w-40 md:w-56 h-auto object-contain object-left transition-transform duration-500 group-hover:scale-105 mix-blend-multiply"
               />
             </Link>
             

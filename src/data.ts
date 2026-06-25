@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Package, AddOn, VehicleSize, GalleryItem } from './types';
+import { Package, VehicleSize, GalleryItem } from './types';
 
 export const PACKAGES: Package[] = [
   {
@@ -112,14 +112,6 @@ export const VEHICLE_SIZES: VehicleSize[] = [
   { id: 'mid_suv', name: 'Mid Size SUV', description: 'Medium SUVs and crossovers' },
   { id: 'suv', name: 'SUV', description: 'Standard size SUVs' },
   { id: 'suv_lwb', name: 'SUV LWB', description: 'Long-wheelbase and full-size SUVs' }
-];
-
-export const ADD_ONS: AddOn[] = [
-  { id: 'ceramic', name: 'Premium Ceramic Coating Up', price: 90000, description: 'Increases shine and repels hydrophobic residues (adds 6 months protection)' },
-  { id: 'pet_hair', name: 'Extreme Pet Hair Extraction', price: 40000, description: 'Deep fiber brushing to locate and extract embedded styling fibers & hair' },
-  { id: 'engine_bay', name: 'Engine Bay Steam Detailing', price: 60000, description: 'Degrease, steam sanitize, and condition rubber hoses and engine covers' },
-  { id: 'steam_sanitize', name: 'AC Vent & Odor Steam Sanitize', price: 45000, description: 'Therapeutic pressurized steam sent deep through all air intake channels' },
-  { id: 'ceramic_glass', name: 'Ceramic Glass Rainproof treatment', price: 35000, description: 'Specialized rain-repelling chemical bonding for wind, front, and side mirrors' }
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [

@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { PACKAGES, VEHICLE_SIZES, ADD_ONS } from '../data';
+import { PACKAGES, VEHICLE_SIZES } from '../data';
 import { Appointment } from '../types';
 import { Calendar, Clock, Car, Phone, Mail, User, ShieldAlert, Sparkles, CheckCircle2, Trash2 } from 'lucide-react';
 
@@ -12,7 +12,6 @@ interface BookingFormProps {
   prefilledConfig: {
     packageId: string;
     vehicleSizeId: string;
-    addOnIds: string[];
     totalCalculated: number;
   } | null;
   onClearPrefilled: () => void;
@@ -29,7 +28,6 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
   const [vehicleMakeModel, setVehicleMakeModel] = useState('');
   const [selectedPackageId, setSelectedPackageId] = useState('single_stage');
   const [selectedSizeId, setSelectedSizeId] = useState('sedan');
-  const [selectedAddOnIds, setSelectedAddOnIds] = useState<string[]>([]);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('09:00 AM');
   const [notes, setNotes] = useState('');
@@ -57,12 +55,10 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
         vehicleSize: 'Sedan / Coupe',
         packageId: 'single_stage',
         packageName: 'Single Stage Paint Correction',
-        addOnIds: ['ceramic', 'steam_sanitize'],
-        addOnNames: ['Premium Ceramic Coating Up', 'AC Vent & Odor Steam Sanitize'],
         date: '2026-06-18',
         time: '11:30 AM',
         notes: 'Please apply extra coating thickness on front splitter and carbon diffuser.',
-        totalPrice: 130000 + 90 + 45,
+        totalPrice: 130000,
         status: 'Confirmed'
       };
       setAppointments([demo]);
@@ -75,7 +71,6 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
     if (prefilledConfig) {
       setSelectedPackageId(prefilledConfig.packageId);
       setSelectedSizeId(prefilledConfig.vehicleSizeId);
-      setSelectedAddOnIds(prefilledConfig.addOnIds);
     }
   }, [prefilledConfig]);
 
@@ -83,21 +78,7 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
   const currentPackage = PACKAGES.find((p) => p.id === selectedPackageId) || PACKAGES[1];
   const currentSize = VEHICLE_SIZES.find((s) => s.id === selectedSizeId) || VEHICLE_SIZES[0];
   
-  const calculatedBase = currentPackage.prices[currentSize.id] || currentPackage.basePrice;
-  const calculatedAddOns = selectedAddOnIds.reduce((sum, id) => {
-    const item = ADD_ONS.find((a) => a.id === id);
-    return sum + (item ? item.price : 0);
-  }, 0);
-  const finalPrice = calculatedBase + calculatedAddOns;
-
-  // Toggle addons from form checkboxes
-  const handleToggleFormAddOn = (id: string) => {
-    if (selectedAddOnIds.includes(id)) {
-      setSelectedAddOnIds(selectedAddOnIds.filter((item) => item !== id));
-    } else {
-      setSelectedAddOnIds([...selectedAddOnIds, id]);
-    }
-  };
+  const finalPrice = currentPackage.prices[currentSize.id] || currentPackage.basePrice;
 
   // Submit appointment handler
   const handleBookSession = (e: React.FormEvent) => {
@@ -110,7 +91,6 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
 
     const packageNames = currentPackage.name;
     const sizeName = currentSize.name;
-    const addOnNames = selectedAddOnIds.map(id => ADD_ONS.find(a => a.id === id)?.name || id);
 
     const newAppointment: Appointment = {
       id: `session-${Date.now()}`,
@@ -121,8 +101,6 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
       vehicleSize: sizeName,
       packageId: selectedPackageId,
       packageName: packageNames,
-      addOnIds: selectedAddOnIds,
-      addOnNames,
       date,
       time,
       notes,
@@ -133,6 +111,13 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
     const updated = [newAppointment, ...appointments];
     setAppointments(updated);
     localStorage.setItem('breezy_appointments', JSON.stringify(updated));
+
+    // Generate WhatsApp message
+    const message = `New Lead Generated:\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nVehicle: ${vehicleMakeModel}\nSize: ${sizeName}\nService: ${packageNames}\nDate: ${date}\nTime: ${time}\nTotal Price: ₦${finalPrice.toLocaleString()}\nNotes: ${notes || 'None'}`;
+    const whatsappUrl = `https://wa.me/2348123456789?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
 
     // Show booking receipt toast/modal
     setSuccessBooking(newAppointment);
@@ -146,9 +131,6 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
     setTime('09:00 AM');
     setNotes('');
     onClearPrefilled();
-
-    // Reset pre-filled selection state
-    setSelectedAddOnIds([]);
   };
 
   // Cancel / Delete appointment
@@ -187,11 +169,11 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
           </p>
         </div>
 
-        {/* BOOKING FORM & ACTIVE RES GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* BOOKING FORM */}
+        <div className="max-w-2xl mx-auto w-full">
           
-          {/* Form Side (7 columns) */}
-          <div className="lg:col-span-7 bg-white border border-gray-200 shadow-sm rounded-[2rem] p-6 md:p-10">
+          {/* Form Side */}
+          <div className="bg-white border border-gray-200 shadow-2xl shadow-black/10 rounded-[2rem] p-8 md:p-12">
             
             <form onSubmit={handleBookSession} className="space-y-6 text-left">
               
@@ -365,41 +347,6 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
                 </div>
               </div>
 
-              {/* Addons Checklist (Inside Booking Form) */}
-              <div>
-                <label className="text-[10px] uppercase font-bold tracking-widest text-gray-500 block mb-2.5">
-                  Applied Protective Shields (Select multi)
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto p-3 bg-gray-50 border border-gray-200 rounded-xl">
-                  {ADD_ONS.map((add) => {
-                    const isChecked = selectedAddOnIds.includes(add.id);
-                    return (
-                      <label
-                        key={add.id}
-                        className={`flex items-center space-x-2.5 p-2 border rounded-lg cursor-pointer select-none text-[11px] transition-all ${
-                          isChecked
-                            ? 'border-brand-accent bg-red-50 text-brand-accent font-bold'
-                            : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
-                        }`}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={isChecked}
-                          onChange={() => handleToggleFormAddOn(add.id)}
-                          className="sr-only"
-                        />
-                        <div className={`h-3 w-3 border rounded-[2px] flex items-center justify-center shrink-0 ${
-                          isChecked ? 'border-brand-accent bg-brand-accent text-white' : 'border-gray-300 bg-white'
-                        }`}>
-                          {isChecked && <div className="w-1.5 h-1.5 bg-white" />}
-                        </div>
-                        <span className="truncate">{add.name}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </div>
-
               {/* Special Instructions Notes */}
               <div>
                 <label className="text-[10px] uppercase font-bold tracking-widest text-gray-500 block mb-2">
@@ -420,7 +367,7 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
                   <span className="text-[10px] text-gray-500 block uppercase font-bold">Formula Verification Total</span>
                   <div className="flex items-center space-x-2 mt-0.5">
                     <span className="text-2xl font-black text-gray-900">₦{finalPrice.toLocaleString()}</span>
-                    <span className="text-[10px] text-gray-400">(₦{calculatedBase.toLocaleString()} base + ₦{calculatedAddOns.toLocaleString()} shields)</span>
+                    <span className="text-[10px] text-gray-400">({currentPackage.name})</span>
                   </div>
                 </div>
                 
@@ -433,103 +380,8 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
               </div>
 
             </form>
-
           </div>
-
-          {/* Appointments Board Side (5 columns) */}
-          <div className="lg:col-span-15 space-y-6 w-full lg:col-span-5 text-left">
-            
-            <div className="bg-white border text-gray-900 border-gray-200 p-6 rounded-3xl shadow-sm h-full">
-              <h3 className="text-xs uppercase font-bold tracking-widest border-b border-gray-100 pb-2 mb-4">
-                ACTIVE RESERVATION REGISTRY
-              </h3>
-              
-              <div className="space-y-4 max-h-[580px] overflow-y-auto pr-1">
-                {appointments.length === 0 ? (
-                  <div className="py-12 text-center text-gray-400 space-y-2">
-                    <ShieldAlert className="h-8 w-8 text-gray-300 mx-auto" />
-                    <p className="text-xs font-mono uppercase tracking-wider text-gray-500">No Reserved Schedulers Detected</p>
-                    <p className="text-[11px] font-sans leading-relaxed px-4">
-                      Configure your package and secure a reservation to start booking tracking tracking.
-                    </p>
-                  </div>
-                ) : (
-                  appointments.map((appt) => (
-                    <div
-                      key={appt.id}
-                      className="border border-gray-200 bg-gray-50 rounded-2xl p-4.5 space-y-3 relative transition-all"
-                    >
-                      {/* Booking Title / Head */}
-                      <div className="flex justify-between items-start gap-3">
-                        <div>
-                          <span className="px-2 py-0.5 bg-red-50 text-brand-accent border border-brand-accent/20 rounded-full text-[9px] uppercase font-bold font-mono">
-                            {appt.status}
-                          </span>
-                          <h4 className="font-bold text-xs text-gray-900 uppercase mt-2 font-sans tracking-wide truncate max-w-[180px]">
-                            {appt.vehicleMakeModel}
-                          </h4>
-                        </div>
-                        
-                        <button
-                          onClick={() => handleCancelAppointment(appt.id)}
-                          className="text-gray-400 hover:text-red-600 p-1 cursor-pointer transition-colors"
-                          title="Cancel Reservation"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                      </div>
-
-                      <div className="w-full h-px bg-gray-200" />
-
-                      {/* Detail points */}
-                      <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-gray-500">
-                        <div>
-                          <p className="text-gray-400 text-[9px] uppercase">Service Setup</p>
-                          <p className="font-bold text-gray-900 truncate mt-0.5">{appt.packageName.split(' ')[1] || appt.packageName}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-400 text-[9px] uppercase">Vehicle scale</p>
-                          <p className="font-bold text-gray-900 truncate mt-0.5">{appt.vehicleSize}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-400 text-[9px] uppercase">Arrival window</p>
-                          <p className="font-bold text-gray-900 mt-0.5">{appt.date} @ {appt.time}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-400 text-[9px] uppercase">Security total</p>
-                          <p className="font-bold text-brand-accent mt-0.5">₦{appt.totalPrice.toLocaleString()}</p>
-                        </div>
-                      </div>
-
-                      {appt.addOnNames && appt.addOnNames.length > 0 && (
-                        <div className="bg-white p-2 border-l border-brand-accent rounded-sm shadow-sm">
-                          <p className="text-[9px] text-gray-400 uppercase font-mono">Active defense shields</p>
-                          <div className="flex flex-wrap gap-1 mt-1">
-                            {appt.addOnNames.map((n, i) => (
-                              <span key={i} className="text-[9px] uppercase bg-gray-50 border border-gray-200 rounded font-mono text-gray-600 px-1 py-0.5">
-                                {n.replace('Premium ', '').replace('Extreme ', '')}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="text-[10px] text-gray-500 space-y-1">
-                        <p className="truncate"><span className="text-gray-400 font-bold">CLIENT:</span> {appt.customerName}</p>
-                        <p className="truncate"><span className="text-gray-400 font-bold">CONTACT:</span> {appt.customerPhone}</p>
-                      </div>
-
-                    </div>
-                  ))
-                )}
-              </div>
-
-            </div>
-
-          </div>
-
         </div>
-
       </div>
 
       {/* RESERVATION REGISTER RECEIPT TOAST */}
@@ -582,7 +434,7 @@ export default function BookingForm({ prefilledConfig, onClearPrefilled }: Booki
             </div>
 
             <p className="text-[11px] font-sans text-gray-500 leading-relaxed text-center">
-              Our master detailer is allocated to your slot. A backup briefing notification was sent to <strong className="text-gray-900">{successBooking.customerEmail}</strong>.
+              Your details have been received and we will reach out to you very soon. A backup briefing notification was sent to <strong className="text-gray-900">{successBooking.customerEmail}</strong>.
             </p>
 
             <button
