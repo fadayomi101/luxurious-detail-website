@@ -14,9 +14,12 @@ export default function Hero({ onOpenBooking }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative w-full aspect-video md:aspect-auto md:h-[100dvh] bg-white overflow-hidden flex items-center justify-center"
+      className="relative w-full h-[100dvh] bg-black overflow-hidden flex items-center justify-center"
     >
-      <video
+      <motion.video
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: [0.21, 0.47, 0.32, 0.98] }}
         src="/fotor-video_remover_object-hd-20260618181733.mp4"
         autoPlay
         loop
@@ -33,14 +36,14 @@ export default function Hero({ onOpenBooking }: HeroProps) {
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-           className="flex gap-4 justify-center items-center mt-auto mb-[5vh] pointer-events-auto"
+           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 justify-center items-center mt-auto mb-[5vh] pointer-events-auto"
         >
-          <button className="px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium hover:bg-white/20 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.2)] hover:scale-105">
+          <button className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium hover:bg-white/20 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.2)] hover:scale-105">
             Discover
           </button>
           <button 
             onClick={onOpenBooking}
-            className="px-6 py-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white font-medium hover:bg-black/60 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.4)] hover:scale-105"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white font-medium hover:bg-black/60 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.4)] hover:scale-105"
           >
             Book Now
           </button>

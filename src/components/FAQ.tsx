@@ -19,8 +19,8 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faqs" className="py-24 bg-gradient-to-br from-red-50 via-white to-[#F5E6D0]/60 px-4 md:px-12 lg:px-24">
-      <div className="max-w-[900px] mx-auto bg-[#F2F2F4] rounded-[3rem] px-6 py-16 md:px-16 md:py-20 shadow-[0_0_80px_rgba(0,0,0,0.15)] border border-white">
+    <section id="faqs" className="py-8 md:py-24 bg-gradient-to-br from-red-50 via-white to-[#F5E6D0]/60 px-4 md:px-12 lg:px-24">
+      <div className="max-w-[900px] mx-auto bg-[#F2F2F4] rounded-[2rem] md:rounded-[3rem] px-4 md:px-16 py-10 md:py-20 shadow-[0_0_80px_rgba(0,0,0,0.15)] border border-white">
         
         {/* SECTION HEADER */}
         <div className="text-center mb-12 md:mb-16">

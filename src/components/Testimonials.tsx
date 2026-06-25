@@ -8,7 +8,7 @@ import { Star, Quote } from 'lucide-react';
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 bg-white text-gray-900 px-6 md:px-12 lg:px-24">
+    <section id="testimonials" className="py-10 md:py-24 bg-white text-gray-900 px-6 md:px-12 lg:px-24">
       <div className="max-w-[1400px] mx-auto">
         
         {/* SECTION HEADER */}
@@ -111,7 +111,7 @@ export default function Testimonials() {
         </div>
         
         {/* Statistics or trust banner row */}
-        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center bg-[#F5E6D0] rounded-[2rem] p-10 md:p-14">
+        <div className="mt-16 md:mt-24 mx-4 md:mx-0 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center bg-[#F5E6D0] rounded-[2rem] p-6 md:p-14">
           <div>
             <p className="font-hero text-3xl md:text-4xl text-[#111118]">1,200+</p>
             <p className="text-[#111118]/70 text-[9px] md:text-[10px] uppercase font-mono tracking-widest mt-2 font-semibold">Supercars Detailed</p>

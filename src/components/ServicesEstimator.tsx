@@ -68,7 +68,7 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
   const displayedPackages = isHome ? PACKAGES.slice(0, 3) : PACKAGES;
 
   return (
-    <section id="services" className={`relative py-16 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24 overflow-hidden ${isHome ? '' : 'pt-0'}`}>
+    <section id="services" className={`relative py-8 md:py-16 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24 overflow-hidden ${isHome ? '' : 'pt-0'}`}>
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
@@ -76,12 +76,18 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
         
         {/* SECTION HEADER */}
         {isHome ? (
-          <div className="text-left max-w-3xl mb-16 relative">
-            <h2 className="font-hero text-5xl md:text-6xl text-gray-900 leading-[1.1] tracking-tight mb-2">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="text-left max-w-3xl mb-16 relative"
+          >
+            <h2 className="font-hero text-4xl sm:text-5xl md:text-6xl text-gray-900 leading-[1.1] tracking-tight mb-2">
               Detailing on Demand.<br />
               <span className="text-gray-400">Bring your vehicle to life.</span>
             </h2>
-          </div>
+          </motion.div>
         ) : (
           <div className="text-center max-w-2xl mx-auto mb-20">
             <span className="text-brand-accent tracking-[0.2em] font-bold text-xs uppercase block mb-3">
@@ -174,7 +180,13 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
         </div>
 
         {isHome && (
-          <div className="flex flex-col items-center justify-center mb-12 gap-6 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="flex flex-col items-center justify-center mb-12 gap-6 relative z-10"
+          >
             <Link 
               to="/services" 
               className="inline-flex items-center gap-2 bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 transition-colors px-8 py-3.5 rounded-full font-bold uppercase tracking-widest text-sm shadow-sm"
@@ -188,7 +200,7 @@ export default function ServicesEstimator({ onSelectConfiguration, isHome = fals
               </div>
               <span className="truncate whitespace-normal"><strong className="text-gray-900">Satisfaction Guarantee -</strong> If the reflection doesn't captivate you, our work isn't done.</span>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* INTERACTIVE ESTIMATOR ANCHOR */}

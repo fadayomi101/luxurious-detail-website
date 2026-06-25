@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useRef } from 'react';
+import { motion } from 'motion/react';
 import { GALLERY_ITEMS } from '../data';
 import { Columns, Grid, Eye, AlertCircle } from 'lucide-react';
 
@@ -37,11 +38,17 @@ export default function BeforeAfterGallery() {
   };
 
   return (
-    <section id="before-after" className="py-16 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24">
+    <section id="before-after" className="py-8 md:py-16 bg-gray-50 text-gray-900 px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         
         {/* SECTION HEADER */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span className="text-brand-accent tracking-[0.2em] font-bold text-xs uppercase block mb-3">
             Proof of Craft
           </span>
@@ -52,10 +59,16 @@ export default function BeforeAfterGallery() {
           <p className="text-gray-500 font-sans text-sm font-light">
             Slide the divider handle left and right on the work below to observe our high-precision optical multi-stage correction capability.
           </p>
-        </div>
+        </motion.div>
 
         {/* WORK SELECTOR BUTTONS */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
           {GALLERY_ITEMS.map((item, index) => (
             <button
               key={item.id}
@@ -72,13 +85,19 @@ export default function BeforeAfterGallery() {
               {item.title}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* INTERACTIVE WIPER WORKSTAGE */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           {/* Main wiping image panel (7 columns) */}
-          <div className="lg:col-span-8">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="lg:col-span-8"
+          >
             <div
               ref={containerRef}
               onMouseMove={handleMouseMove}
@@ -168,7 +187,7 @@ export default function BeforeAfterGallery() {
               <Eye className="h-3.5 w-3.5 text-brand-accent animate-pulse" />
               <span>Tap & drag image slider to sweep wash stage</span>
             </p>
-          </div>
+          </motion.div>
 
           {/* Description commentary Column (4 columns) */}
           <div className="lg:col-span-4 text-left">

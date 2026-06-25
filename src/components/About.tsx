@@ -4,15 +4,16 @@
  */
 
 import { CheckCircle2 } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-white text-gray-900 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section id="about" className="py-8 md:py-16 bg-white text-gray-900 px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Visual Composition */}
-          <div className="lg:col-span-6 relative w-full h-[550px] lg:h-[700px] mb-12 lg:mb-0">
+          <div className="lg:col-span-6 relative w-full h-[550px] lg:h-[700px] mb-12 lg:mb-0 order-2 lg:order-1">
             {/* Left Video (Rectangle) */}
             <div className="absolute left-0 top-0 w-[45%] h-[55%] lg:h-[60%] overflow-hidden rounded-tr-3xl rounded-br-3xl z-10 shadow-lg relative bg-black">
               <video 
@@ -26,13 +27,23 @@ export default function About() {
             </div>
 
             {/* Right Image (Arched top) */}
-            <div className="absolute right-0 bottom-0 top-[10%] w-[65%] h-[90%] overflow-hidden rounded-t-[150px] lg:rounded-t-[200px] rounded-bl-3xl rounded-br-3xl shadow-xl z-0">
-              <img 
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="absolute right-0 bottom-0 top-[10%] w-[65%] h-[90%] overflow-hidden rounded-t-[150px] lg:rounded-t-[200px] rounded-bl-3xl rounded-br-3xl shadow-xl z-0"
+            >
+              <motion.img 
+                initial={{ scale: 1.05 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1.5, ease: [0.21, 0.47, 0.32, 0.98] }}
                 src="/c300.jpeg" 
                 className="w-full h-full object-cover object-center" 
                 alt="Paint correction on C300" 
               />
-            </div>
+            </motion.div>
 
             {/* Floating Card */}
             <div className="absolute left-0 lg:left-8 bottom-[5%] lg:bottom-[10%] bg-white p-6 lg:p-8 rounded-[2rem] shadow-2xl w-[85%] max-w-[340px] border border-gray-100 z-20">
@@ -76,7 +87,7 @@ export default function About() {
           </div>
 
           {/* Right Text Column */}
-          <div className="lg:col-span-6 lg:pl-12 flex flex-col justify-center">
+          <div className="lg:col-span-6 lg:pl-12 flex flex-col justify-center order-1 lg:order-2 mb-12 lg:mb-0">
             {/* Tracking Label */}
             <div className="flex items-center gap-3 mb-6 text-xs font-bold tracking-[0.2em] uppercase text-gray-500">
               <span className="w-2.5 h-2.5 rounded-full bg-brand-bg shadow-sm" />
@@ -84,22 +95,40 @@ export default function About() {
             </div>
 
             {/* Heading */}
-            <h2 className="font-hero text-5xl md:text-6xl text-gray-900 leading-tight mb-8 tracking-tight">
+            <motion.h2 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="font-hero text-4xl sm:text-5xl md:text-6xl text-gray-900 leading-tight mb-6 tracking-tight"
+            >
               Craftsmanship in Every <br />Car Detail
-            </h2>
+            </motion.h2>
 
             {/* Text Content */}
-            <div className="font-sans text-gray-600 text-[17px] leading-relaxed mb-12 space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="font-sans text-gray-600 text-[17px] leading-relaxed mb-12 space-y-6"
+            >
               <p>
                 At Luxuriös Detail, we believe that world-class automotive care shouldn’t come at the cost of our planet. We align our daily operations with UN Sustainable Development Goals 6 and 12.
               </p>
               <p>
                 By pairing elite nano-coatings and master level paint correction with biodegradable chemistry and strict water conservation practices, we deliver a flawless, guilt-free shine. <strong className="text-gray-900 font-semibold font-hero tracking-wide">Perfection for your vehicle, protection for our world.</strong>
               </p>
-            </div>
+            </motion.div>
 
             {/* Grid of Pills */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10"
+            >
               {[
                 "pH-Balanced Chemistry",
                 "Aerospace-Grade Protection",
@@ -113,7 +142,21 @@ export default function About() {
                   <span className="text-sm font-medium font-body text-gray-900 tracking-wide">{pill}</span>
                 </div>
               ))}
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+            >
+              <button 
+                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full sm:w-auto bg-[#CD1C24] text-white hover:bg-gray-900 transition-colors px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm"
+              >
+                Discover Our Services
+              </button>
+            </motion.div>
           </div>
 
         </div>

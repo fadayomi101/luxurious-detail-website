@@ -28,8 +28,16 @@ export default function Navbar() {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-16 z-50 transition-all duration-300 ${isScrolled || location.pathname !== '/' ? 'bg-white/70 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
-      <div className="mx-auto flex items-center justify-between transition-all duration-300 max-w-[1400px]">
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      isScrolled || location.pathname !== '/' 
+        ? 'md:py-4 md:px-8 lg:px-16' 
+        : 'md:py-6'
+    }`}>
+      <div className={`mx-auto flex items-center justify-between transition-all duration-300 max-w-[1400px] ${
+        isScrolled || location.pathname !== '/' 
+          ? 'bg-white/70 backdrop-blur-md shadow-sm rounded-[2rem] /* mobile only */ md:rounded-full px-4 sm:px-8 md:px-8 py-4 md:py-3' 
+          : 'bg-transparent px-4 sm:px-8 lg:px-16 py-6 md:py-0'
+      }`}>
         {/* LEFT: Brand logo with luxury vector emblem & typography */}
         <Link 
           to="/" 
@@ -107,10 +115,10 @@ export default function Navbar() {
           {/* For mobile: Sleek hamburger toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden w-12 h-12 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-md cursor-pointer ${isScrolled ? 'bg-gray-100 text-gray-900 hover:bg-gray-200' : 'liquid-glass text-white/90 hover:text-white'}`}
+            className={`md:hidden w-10 h-10 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer ${isScrolled || location.pathname !== '/' ? 'text-gray-900' : 'text-white'}`}
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
