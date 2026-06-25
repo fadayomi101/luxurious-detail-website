@@ -14,7 +14,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative w-full h-[100dvh] bg-black overflow-hidden flex items-center justify-center"
+      className="relative w-full h-[90dvh] /* mobile only */ md:h-[100dvh] bg-black overflow-hidden flex items-center justify-center"
     >
       {/* Mobile blurred background to fill the screen */}
       <motion.video
@@ -23,7 +23,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover scale-[1.1] blur-2xl opacity-60 md:hidden z-0 pointer-events-none /* mobile only */"
+        className="absolute inset-0 w-full h-full object-cover scale-[1.1] blur-lg opacity-40 md:hidden z-0 pointer-events-none /* mobile only */"
       />
 
       {/* Main video */}
