@@ -16,6 +16,17 @@ export default function Hero({ onOpenBooking }: HeroProps) {
       id="hero"
       className="relative w-full h-[100dvh] bg-black overflow-hidden flex items-center justify-center"
     >
+      {/* Mobile blurred background to fill the screen */}
+      <motion.video
+        src="/fotor-video_remover_object-hd-20260618181733.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover scale-[1.1] blur-2xl opacity-60 md:hidden z-0 pointer-events-none /* mobile only */"
+      />
+
+      {/* Main video */}
       <motion.video
         initial={{ scale: 1.05 }}
         animate={{ scale: 1 }}
@@ -25,7 +36,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] aspect-video rounded-[2rem] object-cover shadow-2xl /* mobile only */ md:top-0 md:left-0 md:translate-x-0 md:translate-y-0 md:w-full md:h-full md:aspect-auto md:rounded-none md:shadow-none z-0 pointer-events-none"
       />
 
       <div className="absolute inset-0 z-10 w-full h-full max-w-[1600px] mx-auto flex flex-col justify-between items-center px-4 pb-[5vh] md:pb-[8vh]">
