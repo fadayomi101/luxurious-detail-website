@@ -26,7 +26,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         className="absolute inset-0 w-full h-full object-cover scale-[1.1] md:hidden z-0 pointer-events-none /* mobile only */"
       />
       {/* Glass overlay for mobile background */}
-      <div className="absolute inset-0 bg-white/10 backdrop-blur-2xl md:hidden z-0 pointer-events-none /* mobile only */"></div>
+      <div className="absolute inset-0 bg-white/5 backdrop-blur-lg md:hidden z-0 pointer-events-none /* mobile only */"></div>
 
       {/* Main video */}
       <motion.video
