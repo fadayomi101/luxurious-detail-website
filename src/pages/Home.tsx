@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import ServicesEstimator from '../components/ServicesEstimator';
+import WatchCareTeaser from '../components/WatchCareTeaser';
 import BeforeAfterGallery from '../components/BeforeAfterGallery';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
@@ -22,6 +23,7 @@ export default function Home() {
       <Hero onOpenBooking={scrollToBooking} />
       <About />
       <ServicesEstimator isHome={true} onSelectConfiguration={handleSelectEstimatorConfig} />
+      <WatchCareTeaser />
       <BeforeAfterGallery />
       <Testimonials />
       <FAQ />
