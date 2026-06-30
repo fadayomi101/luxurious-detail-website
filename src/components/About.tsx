@@ -144,6 +144,31 @@ export default function About() {
               ))}
             </motion.div>
 
+            {/* Accreditations / Certificates */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="mb-10 flex flex-col items-start"
+            >
+               <span className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 block">Official Accreditations</span>
+               <div className="flex items-center space-x-4 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm">
+                  <div className="shrink-0 flex items-center justify-center w-12 h-12 border-[2.5px] border-[#003b49] bg-white">
+                    <span className="text-[#003b49] font-bold text-[15px] tracking-widest ml-0.5">IMI</span>
+                  </div>
+                  <div className="flex flex-col justify-center text-[#003b49]">
+                    <span className="font-bold text-[12px] leading-[1.1] tracking-wider flex items-baseline space-x-1.5">
+                      <span>INSTITUTE</span>
+                      <span className="font-medium text-[9px] tracking-normal">OF THE</span>
+                    </span>
+                    <span className="font-bold text-[12px] leading-[1.1] tracking-wider mt-0.5">
+                      MOTOR INDUSTRY
+                    </span>
+                  </div>
+               </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -86,6 +86,21 @@ export default function Footer() {
             
             {/* Badges */}
             <div className="space-y-3">
+              {/* IMI Certified Badge */}
+              <div className="flex items-center space-x-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="shrink-0 flex items-center justify-center w-10 h-10 border-[2px] border-[#003b49] bg-white">
+                  <span className="text-[#003b49] font-bold text-[13px] tracking-widest ml-0.5">IMI</span>
+                </div>
+                <div className="flex flex-col justify-center text-[#003b49]">
+                  <span className="font-bold text-[10px] leading-[1.1] tracking-wider flex items-baseline space-x-1">
+                    <span>INSTITUTE</span>
+                    <span className="font-medium text-[7px] tracking-normal">OF THE</span>
+                  </span>
+                  <span className="font-bold text-[10px] leading-[1.1] tracking-wider mt-0.5">
+                    MOTOR INDUSTRY
+                  </span>
+                </div>
+              </div>
               <div className="flex items-center space-x-3 p-3 bg-gray-50 border border-gray-100 rounded-xl">
                 <div className="w-8 h-8 rounded-full bg-[#1b9a78] flex items-center justify-center text-white shrink-0">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
