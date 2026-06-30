@@ -133,25 +133,32 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 
 export const TESTIMONIALS = [
   {
-    name: 'Marcus Vance',
-    vehicle: 'Tesla Model S Plaid',
-    quote: 'Absolutely outstanding. My Plaid looks cleaner than the day I picked it up. The paint correction got rid of all of the factory swirl marks. Worth every single penny.',
+    name: 'Oluwaseun T.',
+    vehicle: 'Luxury Vehicle',
+    quote: 'They are very professional and the customer service is exceptional. I will recommend people to come here and have their cars washed. Unlike other places i have been to, they are also into paint corrections and high quality buffing. They also make use of foreign equipments.',
     rating: 5,
     package: 'Three Stage Paint Correction'
   },
   {
-    name: 'Sarah Peterson',
-    vehicle: 'Range Rover Sport',
-    quote: 'Luxuriös is the only place I trust with my Range Rover. With two toddlers and a golden retriever, the interior gets destroyed. The team made it look like a showroom floor.',
+    name: 'Michael A.',
+    vehicle: 'Daily Driver',
+    quote: 'The provide very good detailing services, international standard very good value for money.',
     rating: 5,
     package: 'Two Stage Paint Correction'
   },
   {
-    name: 'David K.',
-    vehicle: 'Porsche 911 GT3 RS',
-    quote: 'Extremely detailed-oriented. They clean the inside of exhaust pipes and standard door sills that other places miss entirely. High-degree of professionalism.',
+    name: 'Chinedu O.',
+    vehicle: 'Performance Coupe',
+    quote: 'Very precise and professional care for cars with the use of only the best equipment suitable for your car 👍',
     rating: 5,
     package: 'Single Stage Paint Correction'
+  },
+  {
+    name: 'Emmanuel K.',
+    vehicle: 'Executive Sedan',
+    quote: 'Very professional, state of the art facilities, none like anything I have seen in this town before.',
+    rating: 5,
+    package: 'The Grand Tour Detail'
   }
 ];
 
